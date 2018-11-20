@@ -1,5 +1,6 @@
 package com.example.yueqiu.Fragement;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.yueqiu.R;
+import com.example.yueqiu.YueEasyActivity;
 
 public class YueFragment extends Fragment implements View.OnClickListener{
     @Nullable
@@ -19,14 +21,18 @@ public class YueFragment extends Fragment implements View.OnClickListener{
         View view = inflater.inflate(R.layout.fragment_yueqiu,container,false);
         Button yq = view.findViewById(R.id.button_yueqiu);
         yq.setOnClickListener(this);
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return view;
     }
 
     @Override
     public void onClick(View v) {
+        Intent intent = new Intent(getContext(),YueEasyActivity.class);
+
         switch (v.getId()){
             case R.id.button_yueqiu:
                 Toast.makeText(getActivity(), "约球按钮被点击了", Toast.LENGTH_SHORT).show();
+                startActivity(intent);
+
                 break;
             default:
                 break;
