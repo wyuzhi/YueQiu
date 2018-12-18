@@ -6,6 +6,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -13,11 +14,18 @@ import com.example.yueqiu.Adapter.FragmentAdapter;
 import com.example.yueqiu.Fragement.FriendsFragment;
 import com.example.yueqiu.Fragement.MoreFragment;
 import com.example.yueqiu.Fragement.YueFragment;
+import com.example.yueqiu.entity.YueEasy;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobObject;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.SaveListener;
+
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
     private List<Fragment> fragments = new ArrayList<>();
     private ViewPager viewPager;
 
@@ -45,6 +53,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Bmob.initialize(this,"954905be70d4f5e4cff3780fb2e13d3f");
+        YueEasy ye =new YueEasy();
+        ye.setMqrs(6);
+        ye.setMsj("2018.12.16.15.20");
+        ye.setMwz("矿大体育馆");
+        ye.save(new SaveListener<String>() {
+            @Override
+            public void done(String s, BmobException e) {
+                Log.d(TAG, "done: " + s);
+            }
+        });
         initView();//页面布局初始化
     }
 

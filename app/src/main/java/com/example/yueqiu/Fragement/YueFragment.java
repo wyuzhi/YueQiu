@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.yueqiu.R;
+import com.example.yueqiu.SignUpActivity;
 import com.example.yueqiu.YueEasyActivity;
 
 public class YueFragment extends Fragment implements View.OnClickListener{
@@ -26,7 +27,7 @@ public class YueFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(getContext(),YueEasyActivity.class);
+        Intent intent = new Intent(getContext(),SignUpActivity.class);
 
         switch (v.getId()){
             case R.id.button_yueqiu:

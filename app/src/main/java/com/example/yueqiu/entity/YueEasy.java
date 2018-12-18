@@ -1,6 +1,8 @@
 package com.example.yueqiu.entity;
 
-public class YueEasy {
+import cn.bmob.v3.BmobObject;
+
+public class YueEasy extends BmobObject {
     private int mqrs;
     private String mwz;
     private String msj;
@@ -15,5 +17,17 @@ public class YueEasy {
 
     public String getSj() {
         return msj;
+    }
+
+    public void setMqrs(int mqrs) {
+        this.mqrs = mqrs;
+    }
+
+    public void setMwz(String mwz) {
+        this.mwz = mwz;
+    }
+
+    public void setMsj(String msj) {
+        this.msj = msj;
     }
 }
