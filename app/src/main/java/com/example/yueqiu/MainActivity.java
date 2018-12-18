@@ -54,16 +54,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Bmob.initialize(this,"954905be70d4f5e4cff3780fb2e13d3f");
-        YueEasy ye =new YueEasy();
-        ye.setMqrs(6);
-        ye.setMsj("2018.12.16.15.20");
-        ye.setMwz("矿大体育馆");
-        ye.save(new SaveListener<String>() {
-            @Override
-            public void done(String s, BmobException e) {
-                Log.d(TAG, "done: " + s);
-            }
-        });
         initView();//页面布局初始化
     }
 

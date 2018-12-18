@@ -18,7 +18,7 @@ public class YueEasyAdapter extends RecyclerView.Adapter<YueEasyAdapter.ViewHold
     private Context mContext;
     private View.OnClickListener mListener;
 
-    public YueEasyAdapter(Context context, List<YueEasy> YueEasyList, View.OnClickListener mListener) {
+    public YueEasyAdapter(Context context, List<YueEasy> YueEasyList) {
         mContext = context;
         mYueEasyList = YueEasyList;
         this.mListener = mListener;

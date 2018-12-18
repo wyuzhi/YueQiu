@@ -27,7 +27,7 @@ public class YueFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(getContext(),SignUpActivity.class);
+        Intent intent = new Intent(getContext(),YueEasyActivity.class);
 
         switch (v.getId()){
             case R.id.button_yueqiu:
