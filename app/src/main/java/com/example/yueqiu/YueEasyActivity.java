@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -29,6 +30,7 @@ public class YueEasyActivity extends AppCompatActivity {
     private List<YueEasy> yeList;
     private Handler mHander;
     private YueEasyAdapter mYueEasyAdapter;
+    private SwipeRefreshLayout mSwipeRefresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,13 @@ public class YueEasyActivity extends AppCompatActivity {
 
 
     private void initView() {
+        mSwipeRefresh = findViewById(R.id.swipe_refresh);
+        mSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadDate();
+            }
+        });
         mRecyclerView =findViewById(R.id.recycler_ye);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         yeList = new ArrayList<>();
