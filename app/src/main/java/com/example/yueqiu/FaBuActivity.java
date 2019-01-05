@@ -1,6 +1,9 @@
 package com.example.yueqiu;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,9 +13,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.yueqiu.entity.YueEasy;
+import com.example.yueqiu.tool.DateTimePicker;
 
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
+
+import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
 
 public class FaBuActivity extends AppCompatActivity {
     private Button mfb;
@@ -22,6 +28,7 @@ public class FaBuActivity extends AppCompatActivity {
     private int qrs;
     private String sj;
     private String wz;
+    DateTimePicker dateTimePicker=new DateTimePicker();
 
 
     @Override
@@ -35,6 +42,14 @@ public class FaBuActivity extends AppCompatActivity {
         mfb =findViewById(R.id.but_fb);
         et_qrs = findViewById(R.id.fb_qrs);
         et_sj = findViewById(R.id.fb_sj);
+        dateTimePicker = new DateTimePicker();
+        et_sj.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onClick(View v) {
+                dateTimePicker.init(FaBuActivity.this,et_sj);
+            }
+        });
         et_wz = findViewById(R.id.fb_wz);
         mfb.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +74,9 @@ public class FaBuActivity extends AppCompatActivity {
                     Log.d("发布", "发布成功");
                     Toast.makeText(FaBuActivity.this, "发布成功",
                             Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(FaBuActivity.this,YueEasyActivity.class);
+                    intent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
                 } else {
                     Log.d("发布", "发布失败:" + e);
                     Toast.makeText(FaBuActivity.this, "发布失败",

@@ -74,6 +74,7 @@ public class YueEasyActivity extends AppCompatActivity {
                     mYueEasyAdapter = new YueEasyAdapter(YueEasyActivity.this,list);
                     mRecyclerView.setAdapter(mYueEasyAdapter);
                     Log.d("查询", "查询成功"+list);
+                    mSwipeRefresh.setRefreshing(false);
                 } else {
                     Log.d("查询", "查询失败:" + e);
                 }

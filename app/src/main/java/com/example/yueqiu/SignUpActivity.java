@@ -1,5 +1,6 @@
 package com.example.yueqiu;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -41,6 +42,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void signup() {
+        final Intent intent = new Intent(this,LoginActivity.class);
 
         final User user = new User();
         yhm = String.valueOf(myhm.getText());
@@ -54,6 +56,7 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(SignUpActivity.this, "注册成功",
                             Toast.LENGTH_SHORT).show();
                     Log.d("注册", "注册成功");
+                    startActivity(intent);
                 } else {
                     Log.d("注册", "注册失败:" + e);
                     Toast.makeText(SignUpActivity.this, "注册失败",
